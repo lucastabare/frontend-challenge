@@ -1,46 +1,88 @@
-# Getting Started with Create React App
+# 📰 Frontend Challenge - News App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una aplicación de noticias construida con **React + TypeScript**, utilizando **Material UI** para la interfaz, y consumiendo una API REST construida en **.NET 6**.
 
-## Available Scripts
+## 🚀 Características
 
-In the project directory, you can run:
+- Listado paginado de noticias
+- Búsqueda por título, autor o contenido
+- Detalle de cada noticia
+- Crear, editar y eliminar noticias
+- Responsive y optimizado para mobile
+- Dockerfile incluido para despliegue del backend
 
-### `npm start`
+## 🛠️ Tecnologías
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Frontend
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Material UI](https://mui.com/)
+- [Axios](https://axios-http.com/)
+- [Formik + Yup](https://formik.org/)
+- React Router DOM
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Backend
+- .NET 6 (API REST)
+- Entity Framework Core
+- PostgreSQL
+- Docker
 
-### `npm test`
+## 📁 Estructura del Proyecto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+frontend-challenge/
+├── src/
+│ ├── components/ # Componentes reutilizables
+│ ├── interfaces/ # Interfaces TypeScript
+│ ├── services/ # Conexión con la API
+│ ├── views/ # Vistas principales (Home, etc.)
+│ ├── App.tsx
+│ └── index.tsx
+├── Dockerfile # (para el backend)
+├── .env
+├── package.json
+└── tsconfig.json
 
-### `npm run build`
+bash
+Copiar
+Editar
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🧪 Instalación
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Clonar el repositorio
+git clone https://github.com/tuusuario/frontend-challenge.git
+cd frontend-challenge
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Instalar dependencias
+npm install
 
-### `npm run eject`
+# Ejecutar el frontend
+npm run dev
+Asegurate de que el backend esté corriendo en http://localhost:5000.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+⚙️ Variables de Entorno
+Crear un archivo .env en la raíz del proyecto con:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+bash
+Copiar
+Editar
+REACT_APP_API_URL=http://localhost:5000/api
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+🐳 Docker Compose
+⚠️ Primero ejecutá el backend con su docker-compose.yml. Asegurate que expone el puerto 5000.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+bash
+Copiar
+Editar
+# Desde la carpeta del backend
+docker-compose up -d
+Luego, en el frontend:
 
-## Learn More
+bash
+Copiar
+Editar
+# Desde la carpeta del frontend
+docker-compose up --build
+Esto iniciará el frontend en: http://localhost:3000
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+El frontend se conectará automáticamente a http://localhost:5000/api usando la variable de entorno REACT_APP_API_URL.
