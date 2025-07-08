@@ -4,6 +4,7 @@ export interface News {
   body: string;
   imageUrl?: string;
   author?: string;
+  date: Date
 }
 
 export interface PaginatedResponse<T> {

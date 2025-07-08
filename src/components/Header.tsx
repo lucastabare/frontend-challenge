@@ -60,9 +60,7 @@ const Header: React.FC = () => {
             </Modal>
 
             <Modal open={openDelete} onClose={() => setOpenDelete(false)}>
-                <Box sx={modalStyle}>
-                    <DeleteModal open={openDelete} onClose={() => setOpenDelete(false)} />
-                </Box>
+                <DeleteModal open={openDelete} onClose={() => setOpenDelete(false)} />
             </Modal>
         </header>
     );

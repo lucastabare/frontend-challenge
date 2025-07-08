@@ -2,40 +2,45 @@ import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 import { News } from '../interfaces/News';
 
 interface NewsItemProps {
-  news: News;
+    news: News;
 }
 
 const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
-console.log("news => ", news)
+    return (
+        <Card sx={{ width: '100%', borderRadius: 2, boxShadow: 3 }}>
+            <CardContent>
+                <Typography variant="h4" component="h2" gutterBottom>
+                    {news.title}
+                </Typography>
 
-  return (
-    <Card sx={{ width: '100%', borderRadius: 2, boxShadow: 3 }}>
-      {news.imageUrl && (
-        <CardMedia
-          component="img"
-          height="200"
-          image={news.imageUrl}
-          alt={news.title}
-          sx={{ objectFit: 'cover' }}
-        />
-      )}
-      <CardContent>
-        <Typography variant="h6" component="div" gutterBottom>
-          {news.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary" gutterBottom>
-          {news.body}
-        </Typography>
-        {news.author && (
-          <Box mt={1}>
-            <Typography variant="caption" color="text.secondary">
-              Por {news.author}
-            </Typography>
-          </Box>
-        )}
-      </CardContent>
-    </Card>
-  );
+                {news.author && (
+                    <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                        Por {news.author} | {new Date(news.date).toLocaleDateString('es-AR', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric',
+                        })}
+                    </Typography>
+                )}
+            </CardContent>
+
+            {news.imageUrl && (
+                <CardMedia
+                    component="img"
+                    height="350"
+                    image={news.imageUrl}
+                    alt={news.title}
+                    sx={{ objectFit: 'cover' }}
+                />
+            )}
+
+            <CardContent>
+                <Typography variant="body1" color="text.primary">
+                    {news.body}
+                </Typography>
+            </CardContent>
+        </Card>
+    );
 };
 
 export default NewsItem;
